@@ -1,12 +1,12 @@
 {
-  "name": "@reverecre/tooling-config",
+  "name": "@reverecre/eslint-config",
   "version": "1.0.0",
-  "description": "Shared tooling config for Revere TypeScript projects",
+  "description": "Shared ESLint config for Revere TypeScript projects",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RevereCRE/tooling-config.git"
+    "url": "git+https://github.com/RevereCRE/eslint-config.git"
   },
   "author": "Ryan Delaney <ryan@reverecre.com>",
   "license": "MIT",
-  "homepage": "https://github.com/RevereCRE/tooling-config#readme"
+  "homepage": "https://github.com/RevereCRE/eslint-config#readme"
 }
