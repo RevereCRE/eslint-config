@@ -1,5 +1,6 @@
 {
   "name": "@reverecre/eslint-config",
+  "private": false,
   "version": "1.0.0",
   "description": "Shared ESLint config for Revere TypeScript projects",
   "repository": {
