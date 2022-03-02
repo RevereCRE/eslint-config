@@ -1,6 +1,6 @@
 {
   "name": "@reverecre/eslint-config",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared ESLint config for Revere TypeScript projects",
   "repository": {
     "type": "git",
