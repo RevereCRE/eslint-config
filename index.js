@@ -3,7 +3,7 @@ module.exports = {
   parserOptions: {
     project: ["./tsconfig.json"],
   },
-  plugins: ["@typescript-eslint", "@reverecre/relay"],
+  plugins: ["@typescript-eslint"],
   extends: [
     "eslint:recommended",
     "prettier",

@@ -1,6 +1,5 @@
 {
   "name": "@reverecre/eslint-config",
-  "private": false,
   "version": "1.0.0",
   "description": "Shared ESLint config for Revere TypeScript projects",
   "repository": {
@@ -9,5 +8,12 @@
   },
   "author": "Ryan Delaney <ryan@reverecre.com>",
   "license": "MIT",
-  "homepage": "https://github.com/RevereCRE/eslint-config#readme"
+  "homepage": "https://github.com/RevereCRE/eslint-config#readme",
+  "peerDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
 }
