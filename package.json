@@ -1,0 +1,12 @@
+{
+  "name": "@reverecre/tooling-config",
+  "version": "1.0.0",
+  "description": "Shared tooling config for Revere TypeScript projects",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RevereCRE/tooling-config.git"
+  },
+  "author": "Ryan Delaney <ryan@reverecre.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/RevereCRE/tooling-config#readme"
+}
