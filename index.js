@@ -37,6 +37,8 @@ module.exports = {
     ],
     "@typescript-eslint/consistent-type-definitions": ["error", "interface"],
     "@typescript-eslint/no-implicit-any-catch": ["error"],
+    "@typescript-eslint/no-unnecessary-condition": "error",
+
     // TODO(ryan): Enable this rule.
     // '@typescript-eslint/strict-boolean-expressions': 'error',
   },
