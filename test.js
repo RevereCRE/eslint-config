@@ -25,11 +25,11 @@ test('no errors', async () => {
 
 test('no-implicit-any-catch', async () => {
   const result = await lint(`
-try {
-  NaN.toString();
-} catch (e) {
-  console.error(e);
-}`);
+    try {
+      NaN.toString();
+    } catch (e) {
+      console.error(e);
+    }`);
 
   expect(result.messages.length).toBe(1);
   expect(result.messages[0].ruleId).toBe(
@@ -60,11 +60,11 @@ test('no-for-in-array', async () => {
 
 test('no-floating-promises', async () => {
   const result = await lint(`
-async function sleep() {
-  await new Promise(r => setTimeout(t, 5000));
-}
+    async function sleep() {
+      await new Promise(r => setTimeout(t, 5000));
+    }
 
-sleep();`);
+    sleep();`);
 
   expect(result.messages.length).toBe(1);
   expect(result.messages[0].ruleId).toBe(
@@ -89,10 +89,10 @@ test('await-thenable', async () => {
 describe('return-await', () => {
   test('outside try-catch', async () => {
     const result = await lint(`
-async function fn() {
-  // eslint-disable-next-line @typescript-eslint/await-thenable
-  return await Promise.resolve('done');
-}`);
+      async function fn() {
+        // eslint-disable-next-line @typescript-eslint/await-thenable
+        return await Promise.resolve('done');
+      }`);
 
     expect(result.messages.length).toBe(1);
     expect(result.messages[0].ruleId).toBe('@typescript-eslint/return-await');
@@ -100,14 +100,14 @@ async function fn() {
 
   test('inside try-catch', async () => {
     const result = await lint(`
-    async function fn() {
-      try {
-        // eslint-disable-next-line @typescript-eslint/await-thenable
-        return await Promise.resolve('done');
-      } catch (error: unknown) {
-        return 'yes';
-      }
-    }`);
+      async function fn() {
+        try {
+          // eslint-disable-next-line @typescript-eslint/await-thenable
+          return await Promise.resolve('done');
+        } catch (error: unknown) {
+          return 'yes';
+        }
+      }`);
 
     expect(result.messages.length).toBe(0);
   });
@@ -115,9 +115,9 @@ async function fn() {
 
 test('promise-function-async', async () => {
   const result = await lint(`
-function iAmReturnPromise() {
-  return Promise.resolve('done');
-}`);
+    function iAmReturnPromise() {
+      return Promise.resolve('done');
+    }`);
 
   expect(result.messages.length).toBe(1);
   expect(result.messages[0].ruleId).toBe(
@@ -133,8 +133,8 @@ test('prefer-includes', async () => {
 
 test('prefer-for-of', async () => {
   const result = await lint(`
-const arr = [];
-for (let i = 0; i < arr.length; i++) { console.log(arr[i]); }`);
+    const arr = [];
+    for (let i = 0; i < arr.length; i++) { console.log(arr[i]); }`);
 
   expect(result.messages.length).toBe(1);
   expect(result.messages[0].ruleId).toBe('@typescript-eslint/prefer-for-of');
@@ -142,12 +142,19 @@ for (let i = 0; i < arr.length; i++) { console.log(arr[i]); }`);
 
 describe('eqeqeq', () => {
   test('nullish comparison', async () => {
-    const result = await lint(`const isEq = 7 == null;`);
+    const result = await lint(`
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      const isEq = 7 == null;`);
+
+    console.log(result);
     expect(result.messages.length).toBe(0);
   });
 
   test('non-nullish comparison', async () => {
-    const result = await lint(`const isEq = 7 == 8;`);
+    const result = await lint(`
+      // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+      const isEq = 7 == 8;`);
+
     expect(result.messages.length).toBe(1);
     expect(result.messages[0].ruleId).toBe('eqeqeq');
   });
