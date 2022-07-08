@@ -28,7 +28,7 @@ test('no-implicit-any-catch', async () => {
     try {
       NaN.toString();
     } catch (e) {
-      console.error(e);
+      void e;
     }`);
 
   expect(result.messages.length).toBe(1);
@@ -46,13 +46,13 @@ test('consistent-type-definitions', async () => {
 });
 
 test('guard-for-in', async () => {
-  const result = await lint(`for (const key in {}) { console.log(key) }`);
+  const result = await lint(`for (const key in {}) { void key; }`);
   expect(result.messages.length).toBe(1);
   expect(result.messages[0].ruleId).toBe('guard-for-in');
 });
 
 test('no-for-in-array', async () => {
-  const result = await lint(`for (const key in []) { console.log(key) }`);
+  const result = await lint(`for (const key in []) { void key; }`);
   expect(result.messages.length).toBe(2);
   expect(result.messages[0].ruleId).toBe('@typescript-eslint/no-for-in-array');
   expect(result.messages[1].ruleId).toBe('guard-for-in');
@@ -134,7 +134,7 @@ test('prefer-includes', async () => {
 test('prefer-for-of', async () => {
   const result = await lint(`
     const arr = [];
-    for (let i = 0; i < arr.length; i++) { console.log(arr[i]); }`);
+    for (let i = 0; i < arr.length; i++) { void arr[i]; }`);
 
   expect(result.messages.length).toBe(1);
   expect(result.messages[0].ruleId).toBe('@typescript-eslint/prefer-for-of');
@@ -146,7 +146,6 @@ describe('eqeqeq', () => {
       // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
       const isEq = 7 == null;`);
 
-    console.log(result);
     expect(result.messages.length).toBe(0);
   });
 
@@ -157,5 +156,13 @@ describe('eqeqeq', () => {
 
     expect(result.messages.length).toBe(1);
     expect(result.messages[0].ruleId).toBe('eqeqeq');
+  });
+});
+
+describe('no-console', () => {
+  test('console.log usage', async () => {
+    const result = await lint(`console.log('hello world');`);
+    expect(result.messages.length).toBe(1);
+    expect(result.messages[0].ruleId).toBe('no-console');
   });
 });

@@ -48,6 +48,7 @@ module.exports = {
     'no-return-await': 'off',
     curly: ['error', 'multi-line'],
     eqeqeq: ['error', 'always', { null: 'ignore' }],
+    'no-console': 'error',
     // TODO(ryan): Enable this rule.
     // '@typescript-eslint/strict-boolean-expressions': 'error',
   },
