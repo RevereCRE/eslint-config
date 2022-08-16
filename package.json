@@ -30,6 +30,6 @@
     "prettier": "^2.6.2"
   },
   "dependencies": {
-    "@reverecre/eslint-plugin-fontawesome": "^1.1.0"
+    "@reverecre/eslint-plugin-fontawesome": "^1.2.0"
   }
 }

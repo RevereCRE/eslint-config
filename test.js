@@ -170,7 +170,7 @@ describe('no-console', () => {
 describe('fontawesome imports', () => {
   test('import faCoffee', async () => {
     const result = await lint(
-      `import { faCoffee, faTimes } from '@fontawesome/free-solid-svg-icons';`
+      `import { faCoffee, faTimes } from '@fortawesome/free-solid-svg-icons';`
     );
 
     expect(result.messages.length).toBe(1);
@@ -179,8 +179,8 @@ describe('fontawesome imports', () => {
     );
     expect(result.messages[0].suggestions.length).toBe(1);
     expect(result.messages[0].suggestions[0].fix.text).toBe(
-      `import { faCoffee } from '@fontawesome/free-solid-svg-icons/faCoffee';
-import { faTimes } from '@fontawesome/free-solid-svg-icons/faTimes';`
+      `import { faCoffee } from '@fortawesome/free-solid-svg-icons/faCoffee';
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';`
     );
   });
 });
