@@ -166,3 +166,21 @@ describe('no-console', () => {
     expect(result.messages[0].ruleId).toBe('no-console');
   });
 });
+
+describe('fontawesome imports', () => {
+  test('import faCoffee', async () => {
+    const result = await lint(
+      `import { faCoffee, faTimes } from '@fontawesome/free-solid-svg-icons';`
+    );
+
+    expect(result.messages.length).toBe(1);
+    expect(result.messages[0].ruleId).toBe(
+      '@reverecre/fontawesome/shakeable-imports'
+    );
+    expect(result.messages[0].suggestions.length).toBe(1);
+    expect(result.messages[0].suggestions[0].fix.text).toBe(
+      `import { faCoffee } from '@fontawesome/free-solid-svg-icons/faCoffee';
+import { faTimes } from '@fontawesome/free-solid-svg-icons/faTimes';`
+    );
+  });
+});

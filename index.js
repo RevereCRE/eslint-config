@@ -3,7 +3,7 @@ module.exports = {
   parserOptions: {
     project: ['./tsconfig.json'],
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', '@reverecre/fontawesome'],
   extends: [
     'eslint:recommended',
     'prettier',
@@ -11,6 +11,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   rules: {
+    '@reverecre/fontawesome/shakeable-imports': 'error',
     '@typescript-eslint/no-unused-vars': [
       'warn',
       {
