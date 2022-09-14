@@ -31,6 +31,17 @@ module.exports = {
         },
       },
     ],
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        selector: ['interface', 'typeAlias', 'enum'],
+        format: ['PascalCase'],
+      },
+      {
+        selector: 'enumMember',
+        format: ['UPPER_CASE'],
+      },
+    ],
     '@typescript-eslint/await-thenable': 'error',
     '@typescript-eslint/consistent-type-definitions': ['error', 'interface'],
     '@typescript-eslint/explicit-module-boundary-types': 'off',

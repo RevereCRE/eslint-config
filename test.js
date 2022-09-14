@@ -184,3 +184,41 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';`
     );
   });
 });
+
+describe('naming-convention', () => {
+  test('interface name', async () => {
+    const result = await lint(`
+      // eslint-disable-next-line @typescript-eslint/no-empty-interface
+      interface lowerCase {}`);
+    expect(result.messages.length).toBe(1);
+    expect(result.messages[0].ruleId).toBe(
+      '@typescript-eslint/naming-convention'
+    );
+  });
+
+  test('type alias', async () => {
+    const result = await lint(`
+      // eslint-disable-next-line @typescript-eslint/no-empty-interface
+      type t = number`);
+    expect(result.messages.length).toBe(1);
+    expect(result.messages[0].ruleId).toBe(
+      '@typescript-eslint/naming-convention'
+    );
+  });
+
+  test('enum name', async () => {
+    const result = await lint(`enum lowerCase {}`);
+    expect(result.messages.length).toBe(1);
+    expect(result.messages[0].ruleId).toBe(
+      '@typescript-eslint/naming-convention'
+    );
+  });
+
+  test('enum member', async () => {
+    const result = await lint(`enum MyEnum { member }`);
+    expect(result.messages.length).toBe(1);
+    expect(result.messages[0].ruleId).toBe(
+      '@typescript-eslint/naming-convention'
+    );
+  });
+});
