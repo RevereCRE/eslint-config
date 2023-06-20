@@ -61,6 +61,7 @@ module.exports = {
     curly: ['error', 'multi-line'],
     eqeqeq: ['error', 'always', { null: 'ignore' }],
     'no-console': 'error',
+    'no-sequences': 'error',
     // TODO(ryan): Enable this rule.
     // '@typescript-eslint/strict-boolean-expressions': 'error',
   },

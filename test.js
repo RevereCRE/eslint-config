@@ -222,3 +222,18 @@ describe('naming-convention', () => {
     );
   });
 });
+
+describe('comma operator', () => {
+  test('chained expressions', async () => {
+    const result = await lint(`
+      async function main() {
+        await Promise.resolve(Date.now()),
+        await Promise.resolve(Date.now())
+      }
+    `);
+
+    console.log(result.messages);
+    expect(result.messages.length).toBe(1);
+    expect(result.messages[0].ruleId).toBe('no-sequences');
+  });
+});
