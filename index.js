@@ -55,6 +55,8 @@ module.exports = {
     '@typescript-eslint/prefer-includes': 'error',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/return-await': ['error', 'in-try-catch'],
+    '@typescript-eslint/no-import-type-side-effects': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error',
     'default-case': ['error'],
     'guard-for-in': 'error',
     'no-return-await': 'off',

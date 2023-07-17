@@ -232,8 +232,52 @@ describe('comma operator', () => {
       }
     `);
 
-    console.log(result.messages);
     expect(result.messages.length).toBe(1);
     expect(result.messages[0].ruleId).toBe('no-sequences');
+  });
+});
+
+describe('type imports', () => {
+  test('type only imports', async () => {
+    const result = await lint(`
+      import { type File } from 'node:fs';
+    `);
+
+    expect(result.messages.length).toBe(1);
+    expect(result.messages[0].ruleId).toBe(
+      '@typescript-eslint/no-import-type-side-effects'
+    );
+  });
+
+  test('type imports', async () => {
+    const result = await lint(`
+      import type { File } from 'node:fs';
+    `);
+
+    expect(result.messages.length).toBe(0);
+  });
+
+  test('unused value imports', async () => {
+    const result = await lint(`
+      import { File } from 'node:fs';
+
+      export function processFile(f: File) {
+        void f;
+      }
+    `);
+
+    expect(result.messages.length).toBe(1);
+  });
+
+  test('unused type imports', async () => {
+    const result = await lint(`
+      import type { File } from 'node:fs';
+
+      export function processFile(f: unknown) {
+        void f;
+      }
+    `);
+
+    expect(result.messages.length).toBe(0);
   });
 });
