@@ -55,11 +55,12 @@ module.exports = {
     '@typescript-eslint/prefer-includes': 'error',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/return-await': ['error', 'in-try-catch'],
-    '@typescript-eslint/no-import-type-side-effects': 'error',
-    '@typescript-eslint/consistent-type-imports': [
-      'error',
-      { fixStyle: 'inline-type-imports' },
-    ],
+    // TODO(REV-3849): Enable these rules for type imports.
+    // '@typescript-eslint/no-import-type-side-effects': 'error',
+    // '@typescript-eslint/consistent-type-imports': [
+    //   'error',
+    //   { fixStyle: 'inline-type-imports' },
+    // ],
     'default-case': ['error'],
     'guard-for-in': 'error',
     'no-return-await': 'off',
@@ -67,6 +68,7 @@ module.exports = {
     eqeqeq: ['error', 'always', { null: 'ignore' }],
     'no-console': 'error',
     'no-sequences': 'error',
+    radix: ['error', 'always'],
     // TODO(ryan): Enable this rule.
     // '@typescript-eslint/strict-boolean-expressions': 'error',
   },

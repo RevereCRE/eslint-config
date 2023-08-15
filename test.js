@@ -237,7 +237,8 @@ describe('comma operator', () => {
   });
 });
 
-describe('type imports', () => {
+// TODO(REV-3849): Enable for type imports.
+describe.skip('type imports', () => {
   test('type only imports', async () => {
     const result = await lint(`
       import { type File } from 'node:fs';
@@ -280,4 +281,13 @@ describe('type imports', () => {
 
     expect(result.messages.length).toBe(0);
   });
+});
+
+test('radix', async () => {
+  const result = await lint(`
+    const n = parseInt(50);
+  `);
+
+  expect(result.messages.length).toBe(1);
+  expect(result.messages[0].ruleId).toBe('radix');
 });
