@@ -54,12 +54,14 @@ module.exports = {
     '@typescript-eslint/prefer-includes': 'error',
     '@typescript-eslint/promise-function-async': 'error',
     '@typescript-eslint/return-await': ['error', 'in-try-catch'],
-    // TODO(REV-3849): Enable these rules for type imports.
-    // '@typescript-eslint/no-import-type-side-effects': 'error',
-    // '@typescript-eslint/consistent-type-imports': [
-    //   'error',
-    //   { fixStyle: 'inline-type-imports' },
-    // ],
+    '@typescript-eslint/consistent-type-imports': [
+      'error',
+      {
+        prefer: 'type-imports',
+        fixStyle: 'inline-type-imports',
+      },
+    ],
+    '@typescript-eslint/no-import-type-side-effects': 'error',
     'default-case': ['error'],
     'guard-for-in': 'error',
     'no-return-await': 'off',

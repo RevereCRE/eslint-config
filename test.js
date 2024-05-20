@@ -23,20 +23,6 @@ test('no errors', async () => {
   expect(result.messages).toEqual([]);
 });
 
-test('no-implicit-any-catch', async () => {
-  const result = await lint(`
-    try {
-      NaN.toString();
-    } catch (e) {
-      void e;
-    }`);
-
-  expect(result.messages.length).toBe(1);
-  expect(result.messages[0].ruleId).toBe(
-    '@typescript-eslint/no-implicit-any-catch'
-  );
-});
-
 test('consistent-type-definitions', async () => {
   const result = await lint(`type MyType = { value: string }`);
   expect(result.messages.length).toBe(1);
@@ -237,8 +223,7 @@ describe('comma operator', () => {
   });
 });
 
-// TODO(REV-3849): Enable for type imports.
-describe.skip('type imports', () => {
+describe('type imports', () => {
   test('type only imports', async () => {
     const result = await lint(`
       import { type File } from 'node:fs';
